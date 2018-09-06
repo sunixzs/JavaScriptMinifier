@@ -1,0 +1,12 @@
+{
+    "name": "sunixzs/JavaScriptMinifier",
+    "description": "A wrapper for Matthias Mullie's minify package",
+    "require": {
+        "matthiasmullie/minify": "1.3.60"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunixzs\\JavaScriptMinifier\\": "src/"
+        }
+    }
+}
