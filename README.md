@@ -56,24 +56,23 @@ Go to your console and type `php MinifyJS.php`.
 The output is something like this:
 
 ```
-file      1 ...path/to/your/working/dir/JavaScript/app.js (10.000KB)
-
+- package 1
+file    1.1 ...path/to/your/working/dir/JavaScript/app.js (10.000KB)
 minified to .../to/your/working/dir/JavaScript/app.min.js (4.000KB)
 saved 50.00% (10.0000KB - 6.000KB = 4.000KB)
-
-file      1 ...orking/dir/vendor/Company/Tool/src/tool.js (16.479KB)
-
+- package 2
+file    2.1 ...orking/dir/vendor/Company/Tool/src/tool.js (16.479KB)
 minified to .../working/dir/JavaScript/CompanyTool.min.js (7.170KB)
 saved 56.49% (16.479KB - 9.310KB = 7.170KB)
-
-file      1 ...path/to/your/working/dir/JavaScript/LIB.js (7.144KB)
-file      2 .../to/your/working/dir/JavaScript/LIB.Dom.js (1.005KB)
-file      3 .../working/dir/JavaScript/LIB.MyExtension.js (13.798KB)
-
+- package 3
+file    3.1 ...path/to/your/working/dir/JavaScript/LIB.js (7.144KB)
+file    3.2 .../to/your/working/dir/JavaScript/LIB.Dom.js (1.005KB)
+file    3.3 .../working/dir/JavaScript/LIB.MyExtension.js (13.798KB)
 minified to .../to/your/working/dir/JavaScript/LIB.min.js (15.008KB)
 saved 31.61% (21.947KB - 6.939KB = 15.008KB)
+- total:
 overall saved 45.94% (48.426KB - 22.248KB = 26.178KB)
-
+- stats:
 minifying took 0.054 seconds
 ...and saved 2 seconds with edge
 ...and saved 0.776 seconds with 3G
