@@ -3,7 +3,7 @@ namespace Sunixzs\JavaScriptMinifier;
 
 use MatthiasMullie\Minify;
 
-class JavaScriptMinifier
+class Wrapper
 {
     /**
      * JavaScript-Files to minify
