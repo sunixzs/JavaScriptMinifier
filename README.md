@@ -51,11 +51,10 @@ $minifier->addFileCollection(
 $minifier->minify();
 ```
 
-Go to your console and type `php MinifyJS.php`.
-
 The output is something like this:
 
 ```
+Computername:dir username$ php MinifyJS.php
 - package 1
 file    1.1 ...path/to/your/working/dir/JavaScript/app.js (10.000KB)
 minified to .../to/your/working/dir/JavaScript/app.min.js (4.000KB)
