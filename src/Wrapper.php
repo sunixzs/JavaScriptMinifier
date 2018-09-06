@@ -13,18 +13,21 @@ class Wrapper
     protected $files = [];
 
     /**
-     * Undocumented variable
-     *
      * @var integer
      */
     protected $totalFilesize = 0;
 
     /**
-     * Undocumented variable
-     *
      * @var integer
      */
     protected $totalMinifiedFilesize = 0;
+
+    /**
+     * Only for output a counter of output files
+     *
+     * @var integer
+     */
+    protected $outputFilesCounter = 0;
 
     /**
      * adds a file to minify
@@ -167,7 +170,8 @@ class Wrapper
         $time_start = microtime(true);
         $this->initOut();
         foreach ($this->files as $minifiedFile => $files) {
-
+            $this->outputFilesCounter++;
+            $this->addOut("- package " . $this->outputFilesCounter . ":");
             // define output file
             if (!is_string($minifiedFile) || is_numeric($minifiedFile)) {
                 $minifiedFile = substr($files[0], 0, -3) . ".min.js";
@@ -190,9 +194,9 @@ class Wrapper
                 $filesizeHuman = $this->humanFilesize($filesize);
                 $fileShortened = $this->shortenedName($file, 70);
 
-                $filenum = str_replace('~', ' ', str_pad((string) ($f + 1), 6, "~", STR_PAD_LEFT));
+                $filenum = str_replace('~', ' ', str_pad($this->outputFilesCounter . "." . (string) ($f + 1), 6, "~", STR_PAD_LEFT));
 
-                $this->addOut(PHP_EOL . "file ${filenum} ${fileShortened} (${filesizeHuman})");
+                $this->addOut("file ${filenum} ${fileShortened} (${filesizeHuman})");
 
                 $f++;
             }
@@ -217,7 +221,7 @@ class Wrapper
             $minifiedFileShortened = $this->shortenedName($minifiedFile, 70);
 
             // show the result
-            $this->addOut(PHP_EOL . "minified to ${minifiedFileShortened} (${minifiedFilesizeHuman})");
+            $this->addOut("minified to ${minifiedFileShortened} (${minifiedFilesizeHuman})");
             $this->addOut("saved ${savedPercent}% (${collectionFilesizeHuman} - ${savedFilesizeHuman} = ${minifiedFilesizeHuman})");
         }
 
@@ -236,13 +240,15 @@ class Wrapper
         $saved3GTimeHuman = $this->humanReadableSeconds($saved3GTime);
         
         // ... and show them
+        $this->addOut("- total:");
         $this->addOut("overall saved ${savedTotalPercent}% (${totalFilesizeHuman} - ${savedTotalFilesizeHuman} = ${totalMinifiedFilesizeHuman})");
 
         $time_end = microtime(true);
 
         $time = number_format($time_end - $time_start, 3);
- 
-        $this->addOut(PHP_EOL . "minifying took ${time} seconds");
+        
+        $this->addOut("- stats:");
+        $this->addOut("minifying took ${time} seconds");
         $this->addOut("...and saved ${savedEdgeTimeHuman} with edge");
         $this->addOut("...and saved ${saved3GTimeHuman} with 3G" . PHP_EOL);
 
